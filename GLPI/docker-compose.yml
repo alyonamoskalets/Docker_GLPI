@@ -9,8 +9,6 @@ services:
       - '443:443'
     volumes:
       - /glpi/ssl:/etc/ssl/
-      - /glpi/nginx:/etc/nginx
-      - /glpi/html:/var/www/html
   glpi_db:
     image: mariadb:latest
     restart: always
