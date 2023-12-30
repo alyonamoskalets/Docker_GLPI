@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  glpi:
+    build: .
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - /glpi/ssl:/etc/ssl/
+      - /glpi/nginx:/etc/nginx
+      - /glpi/html:/var/www/html
+  glpi_db:
+    image: mariadb:latest
+    restart: always
+    ports:
+    - '3306:3306'
+    volumes:
+      - /glpi/db:/var/lib/mysql
+    environment:
+      - MARIADB_USER=inventory_user
+      - MARIADB_PASSWORD=pass4DB
+      - MARIADB_DATABASE=inventory
+      - MARIADB_ROOT_PASSWORD=pass4Admin
+      - MARIADB_PORT_NUMBER=3306
+  glpi_cp:
+    image: adminer
+    restart: always
+    ports:
+      - '8080:8080'
+    depends_on:
+      - glpi_db
+    links:
+      - glpi_db
