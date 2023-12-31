@@ -15,7 +15,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends php php-fpm 
     && sed -i 's/session.cookie_httponly =/session.cookie_httponly = on/' /etc/php/8.2/fpm/php.ini \
     && sed -i 's/session.cookie_httponly =/session.cookie_httponly = on/' /etc/php/8.2/fpm/php.ini \
     && rm /var/www/html/index.nginx-debian.html
-COPY ["start.sh", "/glpi/start.sh"]
-RUN chmod +x /glpi/start.sh
+COPY ["/var/www/glpi/start.sh", "/var/www/glpi/start.sh"]
+RUN chmod +x /var/www/glpi/start.sh
 EXPOSE 80 443
-CMD ["/glpi/start.sh"]
+CMD ["/var/www/glpi/start.sh"]
