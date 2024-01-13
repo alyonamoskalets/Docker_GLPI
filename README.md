@@ -18,7 +18,7 @@ It is possible to run all containers [1] separately or [2] by using Docker Compo
    
    docker run --name glpi-mysql -d -p 3306:3306 -e MARIADB_USER=inventory_user -e MARIADB_PASSWORD=pass4DB -e MARIADB_DATABASE=inventory -e MARIADB_ROOT_PASSWORD=pass4Admin -e MARIADB_PORT_NUMBER=3306 -v /glpi/db:/var/lib/mysql mariadb
    
-   docker run --name glpi-adminer -d -p 8080:8080 --links mysql adminer
+   docker run --name glpi-adminer -d -p 8080:8080 --link glpi-mysql adminer
 
 2. Run by Docker Compose:
 
