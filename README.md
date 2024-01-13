@@ -24,6 +24,8 @@ It is possible to run all containers [1] separately or [2] by using Docker Compo
 
    docker compose up -d -f docker-compose-public.yml
 
+3. Install and setup GLPI: https://glpi.local
+
 *****
 *****
 
