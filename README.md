@@ -1,4 +1,4 @@
-GLPI server in Docker.
+GLPI v10.0.11 server in Docker.
 
 *****
 
